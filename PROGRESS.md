@@ -81,7 +81,7 @@ Single source of truth for this project. Read this first; open only the file you
 
 ## Commands
 - Dev: `npm run dev` · Check: `npm run lint && npm run build` · Local prod: `npx next start -p 3456` (on Windows kill the node PID on 3456 afterwards — TaskStop leaves it running)
-- Deploy: push to `main` on GitHub (proudstone-576/rehab-passport) → Vercel auto-deploys once the repo is connected in Vercel → Settings → Git. Fallback: `npx vercel deploy --prod --yes` from the PC folder (env vars already on Vercel)
+- Deploy: push to `main` on GitHub (simar2302/rehab-passport) → Vercel auto-deploys (repo connected in Vercel → Settings → Git). Fallback: `npx vercel deploy --prod --yes` from the PC folder (env vars already on Vercel)
 - E2E check used: headless Chrome via puppeteer-core script in session scratchpad (demo login, cross-browser save, phone tick+pain → clinic, 401/404 checks)
 
 ## Status
@@ -108,3 +108,4 @@ Single source of truth for this project. Read this first; open only the file you
 - 2026-11-02 — code moved to GitHub (proudstone-576/rehab-passport); Vercel deploys on push to `main`.
 - 2026-11-15 — v5 redesign (branch `redesign`): tokens + component system, navy sidebar, new Dashboard (needs attention, upcoming visits, recent activity), `/patients` list with search/filters, patient tabs, picture-card library, wizard with dose steppers, simpler evaluation bars, new `/settings`, bigger patient phone/QR pages, refreshed A4 print (checked as PDF in en/pa/both). Hallmark lint 131 → 0 open Floor FAILs (waivers recorded in `globals.css`).
 - 2026-11-15 — v5 merged to `main` and live. **Undo point:** the site before the redesign is commit `d217c16`. To undo: `git revert --no-edit d217c16..HEAD-of-redesign` (i.e. revert commits aafe5c3..the v5 docs commit) and push `main`; no data changes needed.
+- 2026-11-20 — repo now simar2302/rehab-passport; Vercel connected to it and deploys on push to `main`.

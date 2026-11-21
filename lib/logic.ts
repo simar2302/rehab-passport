@@ -29,8 +29,11 @@ export function daysBetween(a: string, b: string): number {
   return Math.round((parseKey(b).getTime() - parseKey(a).getTime()) / 86400000);
 }
 
+// The year is shown only when it is not the current one: "Nov 20", "Jan 3, 2027".
 export function fmtDate(key: string): string {
-  return parseKey(key).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
+  const d = parseKey(key);
+  const year = d.getFullYear() === new Date().getFullYear() ? undefined : "numeric";
+  return d.toLocaleDateString(undefined, { day: "numeric", month: "short", year });
 }
 
 export function fmtDay(key: string): string {

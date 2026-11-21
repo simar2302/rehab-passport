@@ -158,7 +158,10 @@ export default function MyPassport({ token }: { token: string }) {
           </span>
           <div className="period-progress">
             <div className="bar"><div style={{ width: `${pct}%` }} /></div>
-            <small><T lang={lang} k="periodProgress" />: {done} / {expected} ({pct}%)</small>
+            <div className="period-label">
+              <small><T lang={lang} k="periodProgress" /></small>
+              <strong className="num">{done} / {expected}<span> · {pct}%</span></strong>
+            </div>
           </div>
           <div className="period-strip">
             {v.periodDays.map((d) => {
@@ -195,7 +198,7 @@ export default function MyPassport({ token }: { token: string }) {
                   </button>
                   <button type="button" className="btn steps-btn" aria-expanded={open === i} onClick={() => setOpen(open === i ? null : i)}>
                     <Icon name={open === i ? "close" : "play"} size={18} />
-                    <T lang={lang} k={open === i ? "hideSteps" : "showSteps"} />
+                    <span className="steps-label"><T lang={lang} k={open === i ? "hideSteps" : "showSteps"} /></span>
                   </button>
                 </div>
                 {open === i && <ExerciseView ex={ex} lang={lang} />}
@@ -219,7 +222,10 @@ export default function MyPassport({ token }: { token: string }) {
               </button>
             ))}
           </div>
-          <div className="pain-ends small muted"><T lang={lang} k="painNone" /><T lang={lang} k="painWorst" /></div>
+          <div className="pain-ends small muted">
+            <span><b>0</b> <T lang={lang} k="painNone" /></span>
+            <span><b>10</b> <T lang={lang} k="painWorst" /></span>
+          </div>
           {painToday !== null && painToday >= 7 && <p className="stop-box" role="alert"><T lang={lang} k="painHigh" /></p>}
         </section>
 

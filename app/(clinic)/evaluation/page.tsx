@@ -156,7 +156,7 @@ export default function Evaluation() {
             <tbody>
               {painRows.map(({ p, patient, n, first, last, high, phone, ticks }) => (
                 <tr key={p.id}>
-                  <td>{patient?.code}</td>
+                  <td><Link href={`/patients/${p.patientId}`} className="strong-link">{patient?.code}</Link></td>
                   <td className="num">v{p.version}</td>
                   <td className="num">{n}</td>
                   <td className="num">{n ? `${fmt(first)} to ${fmt(last)}` : <span className="muted">None yet</span>}</td>

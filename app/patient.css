@@ -66,9 +66,9 @@ h1 .bi-en, .patient-band .bi-en, .visit-card .bi-en, .period-progress .bi-en { c
 .mini-fig { flex: none; width: 104px; background: var(--color-paper); border-radius: var(--radius-control); display: grid; place-items: center; padding: var(--space-2xs); }
 .today-list > li.done .mini-fig { background: var(--color-surface); }
 .mini-fig .figure { height: 84px; width: auto; }
-.today-actions { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-xs); }
+.today-actions { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--space-xs); }
 .tick-btn {
-  display: flex; align-items: center; justify-content: center; gap: var(--space-xs); min-height: var(--touch-big); padding: var(--space-xs) var(--space-md);
+  display: flex; align-items: center; justify-content: center; gap: var(--space-xs); min-height: var(--touch-big); padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-card); border: 2px solid var(--color-accent-strong); background: var(--color-surface); color: var(--color-accent-strong);
   font-weight: 700; font-size: var(--text-lg); line-height: 1.2; cursor: pointer; text-align: left;
   transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
@@ -79,8 +79,8 @@ h1 .bi-en, .patient-band .bi-en, .visit-card .bi-en, .period-progress .bi-en { c
 .tick-btn:active { transform: scale(0.98); }
 .tick-btn.on { background: var(--color-accent-strong); color: var(--color-on-dark); }
 .tick-btn.on .tick-mark { background: var(--color-on-dark); color: var(--color-accent-strong); border-color: var(--color-on-dark); animation: pop-in var(--dur-short) var(--ease-out); }
-.steps-btn { min-height: var(--touch-big); font-size: var(--text-md); padding: 0 var(--space-md); white-space: normal; text-align: left; }
-.steps-btn .bi-en { font-size: 0.8em; }
+.steps-btn { min-height: var(--touch-big); font-size: var(--text-md); padding: var(--space-2xs) var(--space-sm); white-space: normal; text-align: left; line-height: 1.2; }
+.steps-label .bi-en { font-size: 0.8em; }
 @keyframes pop-in { from { transform: scale(0.6); opacity: 0; } }
 @media (max-width: 24rem) { .today-actions { grid-template-columns: minmax(0, 1fr); } .mini-fig { width: 84px; } }
 .exview { border-top: 1px dashed var(--color-rule-strong); padding-top: var(--space-md); }
@@ -103,15 +103,18 @@ h1 .bi-en, .patient-band .bi-en, .visit-card .bi-en, .period-progress .bi-en { c
 .period-progress { margin-top: var(--space-sm); }
 .period-progress .bar { background: var(--color-on-dark-track); height: 10px; }
 .period-progress .bar > div { background: var(--color-on-dark-accent); }
-.period-progress small { color: var(--color-on-dark-muted); font-weight: 400; display: block; margin-top: var(--space-2xs); }
-.period-strip { display: flex; gap: var(--space-2xs); margin-top: var(--space-sm); overflow-x: auto; padding-bottom: var(--space-3xs); }
-.period-strip .week-day { flex: 0 0 28px; }
+.period-label { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-sm); margin-top: var(--space-xs); }
+.period-label small { color: var(--color-on-dark-muted); font-weight: 400; }
+.period-label strong { flex: none; font-size: var(--text-md); color: var(--color-on-dark); }
+.period-label strong span { color: var(--color-on-dark-accent); }
+/* one row per week, so the whole period is visible without sideways scrolling */
+.period-strip { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: var(--space-xs) var(--space-2xs); margin-top: var(--space-md); }
 .period-strip .week-day small { color: var(--color-on-dark-muted); font-size: var(--text-xs); }
 .period-strip .dot { width: 26px; height: 26px; font-size: var(--text-xs); border-color: var(--color-on-dark-line); color: var(--color-on-dark); }
 .period-strip .dot.part { background: var(--color-on-dark-accent-soft); border-color: var(--color-on-dark-accent); }
 .period-strip .dot.full { background: var(--color-on-dark-accent); border-color: var(--color-on-dark-accent); color: var(--color-navy); }
 .period-strip .dot.future { border-style: dashed; border-color: var(--color-on-dark-faint); }
-.period-strip .dot.visit { background: var(--color-on-dark); border-color: var(--color-on-dark); }
+.period-strip .dot.visit { background: var(--color-on-dark); border-color: var(--color-on-dark); color: var(--color-navy); }
 .period-strip .now .dot { box-shadow: 0 0 0 2px var(--color-on-dark); }
 
 /* pain buttons */
@@ -124,7 +127,10 @@ h1 .bi-en, .patient-band .bi-en, .visit-card .bi-en, .period-progress .bi-en { c
 .pain-buttons .lvl2 { background: var(--color-caution-soft); }
 .pain-buttons .lvl3 { background: var(--color-danger-soft); }
 .pain-buttons button.on { background: var(--color-navy); color: var(--color-on-dark); border-color: var(--color-navy); transform: scale(1.06); }
-.pain-ends { display: flex; justify-content: space-between; margin-top: var(--space-2xs); font-size: var(--text-sm); }
+.pain-ends { display: flex; justify-content: space-between; gap: var(--space-md); margin-top: var(--space-xs); font-size: var(--text-sm); line-height: 1.3; }
+.pain-ends > span:last-child { text-align: right; }
+.pain-ends b { color: var(--color-navy); font-variant-numeric: tabular-nums; }
+.pain-ends .bi-en { font-size: 0.9em; }
 
 /* animated figure */
 .anim-box { flex-direction: column; align-items: stretch; }
